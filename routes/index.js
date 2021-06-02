@@ -24,8 +24,8 @@ router.post("/api/workouts", (req, res) => {
 });
 
 router.put("/api/workouts/:id", (req, res) => {
-  const id = req.params.id;
-  const body = req.body;
+  var id = req.params.id;
+  var body = req.body;
 
   Workout.Workout.findOneAndUpdate({ _id: id }, { $push: { exercises: body } })
     .then((data) => {
@@ -37,8 +37,8 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 router.put("/api/workouts/:id", (req, res) => {
-  const id = req.params.id;
-  const body = req.body;
+  var id = req.params.id;
+  var body = req.body;
 
   Workout.Workout.findOneAndUpdate(
     { _id: id },
@@ -77,4 +77,4 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-module.exports = router;
+module.exports = router; 
