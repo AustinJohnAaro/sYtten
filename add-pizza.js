@@ -72,6 +72,8 @@ fetch('/api/pizzas', {
   })
   .catch(err => {
     console.log(err);
-  }); 
+    saveRecord(formData);
+  });
+   
 
   

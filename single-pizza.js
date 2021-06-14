@@ -19,6 +19,20 @@ function getPizza() {
   // get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
     .then(response => {
+      // check for a 4xx or 5xx error from server
+      if (!response.ok) {
+        throw new Error({ message: 'Something went wrong!' });
+      }
+
+      return response.json();
+    })
+    .then(printPizza)
+} 
+
+
+  // get pizzaInfo
+  fetch(`/api/pizzas/${pizzaId}`)
+    .then(response => {
       if (!response.ok) {
         throw new Error({ message: 'Something went wrong!' });
       }
@@ -31,7 +45,7 @@ function getPizza() {
       alert('Cannot find a pizza with this id! Taking you back.');
       window.history.back();
     });
-}
+
 
   // get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
@@ -128,7 +142,7 @@ function handleNewCommentSubmit(event) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(formData)
-  }
+  })
     .then(response => {
       if (!response.ok) {
         throw new Error('Something went wrong!');
@@ -142,6 +156,7 @@ function handleNewCommentSubmit(event) {
     .catch(err => {
       console.log(err);
     });
+} 
     
 
 function handleNewReplySubmit(event) {
@@ -161,11 +176,34 @@ function handleNewReplySubmit(event) {
   }
 
   const formData = { writtenBy, replyBody };
+
+  fetch(`/api/comments/${pizzaId}/${commentId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
+      response.json();
+    })
+    .then(commentResponse => {
+      console.log(commentResponse);
+      location.reload();
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 $backBtn.addEventListener('click', function() {
   window.history.back();
 });
+
 
 $newCommentForm.addEventListener('submit', handleNewCommentSubmit);
 $commentSection.addEventListener('submit', handleNewReplySubmit);
