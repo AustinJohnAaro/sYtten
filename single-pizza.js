@@ -142,7 +142,7 @@ function handleNewCommentSubmit(event) {
     .catch(err => {
       console.log(err);
     });
-
+    
 
 function handleNewReplySubmit(event) {
   event.preventDefault();
