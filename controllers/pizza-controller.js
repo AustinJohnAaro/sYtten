@@ -1,6 +1,6 @@
-const { Pizza } = require('../models');
+var { Pizza } = require('../models');
 
-const pizzaController = {
+var pizzaController = {
     // get all pizzas
     getAllPizza(req, res) {
       Pizza.find({})

@@ -1,4 +1,4 @@
-const { Comment, Pizza } = require('../models');
+var { Comment, Pizza } = require('../models');
 
 
 
@@ -62,12 +62,13 @@ removeComment({ params }, res)
     })
     .catch(err => res.json(err));
 
-    addReply({ params, body }, res) {
+    addReply({ params, body }, res) 
       Comment.findOneAndUpdate(
         { _id: params.commentId },
         { $push: { replies: body } },
         { new: true, runValidators: true }
       )
 
-module.exports = commentController; 
-  
+module.exports = commentController;
+
+
