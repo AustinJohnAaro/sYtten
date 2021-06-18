@@ -1,8 +1,8 @@
-const addDateSuffix = date => {
-    let dateStr = date.toString();
+var addDateSuffix = date => {
+    var dateStr = date.toString();
   
     // get last char of date string
-    const lastChar = dateStr.charAt(dateStr.length - 1);
+    var lastChar = dateStr.charAt(dateStr.length - 1);
   
     if (lastChar === '1' && dateStr !== '11') {
       dateStr = `${dateStr}st`;
@@ -22,7 +22,7 @@ const addDateSuffix = date => {
     timestamp,
     { monthLength = 'short', dateSuffix = true } = {}
   ) => {
-    let months;
+    var months;
   
     if (monthLength === 'short') {
       months = {
@@ -56,10 +56,10 @@ const addDateSuffix = date => {
       };
     }
   
-    const dateObj = new Date(timestamp);
-    const formattedMonth = months[dateObj.getMonth()];
+    var dateObj = new Date(timestamp);
+    var formattedMonth = months[dateObj.getMonth()];
   
-    let dayOfMonth;
+    var dayOfMonth;
   
     if (dateSuffix) {
       dayOfMonth = addDateSuffix(dateObj.getDate());
@@ -67,9 +67,9 @@ const addDateSuffix = date => {
       dayOfMonth = dateObj.getDate();
     }
   
-    const year = dateObj.getFullYear();
+    var year = dateObj.getFullYear();
   
-    let hour;
+    var hour;
     // check for 24-hr time
     if (dateObj.getHours > 12) {
       hour = Math.floor(dateObj.getHours() / 2);
@@ -81,10 +81,10 @@ const addDateSuffix = date => {
       hour = 12;
     }
   
-    const minutes = dateObj.getMinutes();
+    var minutes = dateObj.getMinutes();
   
     // set `am` or `pm`
-    let periodOfDay;
+    var periodOfDay;
   
     if (dateObj.getHours() >= 12) {
       periodOfDay = 'pm';
@@ -92,7 +92,7 @@ const addDateSuffix = date => {
       periodOfDay = 'am';
     }
   
-    const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
+    var formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
   
     return formattedTimeStamp;
   };

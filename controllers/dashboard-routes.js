@@ -3,7 +3,7 @@ var sequelize = require('../config/connection');
 var { Post, User, Comment, Love } = require('../models');
 var withAuth = require('../utils/auth');
 
-// get all posts for dashboard
+
 router.get('/', withAuth, (req, res) => {
   Post.findAll({
     where: {
@@ -32,7 +32,7 @@ router.get('/', withAuth, (req, res) => {
     ]
   })
     .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+      var posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('dashboard', { posts, loggedIn: true });
     })
     .catch(err => {
@@ -76,7 +76,7 @@ router.get('/edit/:id', (req, res) => {
         return;
       }
 
-      const post = dbPostData.get({
+      var post = dbPostData.get({
         plain: true
       });
 

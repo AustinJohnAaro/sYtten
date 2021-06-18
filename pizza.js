@@ -1,10 +1,10 @@
-const { Schema, model } = require('mongoose'); 
+var { Schema, model } = require('mongoose'); 
 
-const dateFormat = require('../utils/dateFormat');
+var dateFormat = require('../utils/dateFormat');
 
 
 
-const PizzaSchema = new Schema(
+var PizzaSchema = new Schema(
   {
     pizzaName: {
       type: String,
@@ -44,7 +44,7 @@ const PizzaSchema = new Schema(
 ); 
 
   // create the Pizza model using the PizzaSchema
-const Pizza = model('Pizza', PizzaSchema);
+var Pizza = model('Pizza', PizzaSchema);
 
 createdAt: [ {
   type: Date,
@@ -61,7 +61,7 @@ comments: [
 
 
 
-const pizza = await Pizza.findOne()
+var pizza = await Pizza.findOne()
 
 PizzaSchema.virtual('commentCount').get(function() {
   return this.comments.reduce((total, comment) => total + comment.replies.length + 1, 0);
@@ -69,19 +69,19 @@ PizzaSchema.virtual('commentCount').get(function() {
 
 
 
-const developers = [
+var developers = [
   {
-    name: "Eliza",
+    name: "Austin",
     experience: 7,
     role: "manager"
   },
   {
-    name: "Manuel",
+    name: "John",
     experience: 2,
     role: "developer"
   },
   {
-    name: "Kim",
+    name: "Aaro",
     experience: 5,
     role: "developer"
   }
@@ -92,7 +92,7 @@ function calculateAverage(total, years, index, array) {
   return index === array.length-1 ? total/array.length: total
 }
 
-const average = developers.map(dev => dev.experience).reduce(calculateAverage); 
+var average = developers.map(dev => dev.experience).reduce(calculateAverage); 
 
 
 

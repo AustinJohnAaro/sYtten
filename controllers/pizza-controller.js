@@ -1,7 +1,7 @@
 var { Pizza } = require('../models');
 
 var pizzaController = {
-    // get all pizzas
+    
     getAllPizza(req, res) {
       Pizza.find({})
         .populate({
@@ -17,7 +17,7 @@ var pizzaController = {
         });
     }, 
   
-    // get one pizza by id
+    
 getPizzaById({ params }, res) {
   Pizza.findOne({ _id: params.id })
     .populate({
@@ -40,27 +40,27 @@ getPizzaById({ params }, res) {
 
   } 
 
-  const dogObject = {
-    // this...
+  var dogObject = {
+    
     bark: function() {
       console.log('Woof!');
     },
   
-    // ... is the same as this
+    
     bark() {
       console.log('Woof!');
     }
   } 
 
-  // createPizza
+  
 createPizza({ body }, res) 
   Pizza.create(body)
     .then(dbPizzaData => res.json(dbPizzaData))
     .catch(err => res.status(400).json(err));
 
 
-  // update pizza by id
-// update pizza by id
+  
+
 updatePizza({ params, body }, res) 
   Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
     .then(dbPizzaData => {
@@ -74,7 +74,7 @@ updatePizza({ params, body }, res)
 
 
 
-// delete pizza
+
 deletePizza({ params }, res) 
   Pizza.findOneAndDelete({ _id: params.id })
     .then(dbPizzaData => {

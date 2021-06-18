@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const { addComment, removeComment } = require('../../controllers/comment-controller');
+var router = require('express').Router();
+var { addComment, removeComment } = require('../../controllers/comment-controller');
 
 // /api/comments/<pizzaId>
 router.route('/:pizzaId').post(addComment);
 
-const {
+var {
     addComment,
     removeComment,
     addReply,
@@ -13,7 +13,7 @@ const {
  
 
 
-// /api/comments/<pizzaId>/<commentId>
+
 
 router
   .route('/:pizzaId/:commentId')

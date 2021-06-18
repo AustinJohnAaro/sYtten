@@ -82,7 +82,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/uplove', (req, res) => {
-  // custom static method created in models/Post.js
+  
   if (req.session) {
     Post.uplove({ ...req.body, user_id: req.session.user_id }, { Love, Comment, User })
       .then(updatedLoveData => res.json(updatedLoveData))

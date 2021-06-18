@@ -1,12 +1,12 @@
-const { Schema, model } = require('mongoose');
-const { Schema, model, Types } = require('mongoose'); 
-const dateFormat = require('../utils/dateFormat');
+var { Schema, model } = require('mongoose');
+var { Schema, model, Types } = require('mongoose'); 
+var dateFormat = require('../utils/dateFormat');
 
 CommentSchema.virtual('replyCount').get(function() {
   return this.replies.length;
 });
 
-const CommentSchema = new Schema(
+var CommentSchema = new Schema(
   {
     writtenBy: {
       type: String
@@ -35,7 +35,7 @@ module.exports = Comment;
 
 replies: [ReplySchema] 
 
-const ReplySchema = new Schema(
+var ReplySchema = new Schema(
   {
     // set custom id to avoid confusion with parent comment _id
     replyId: {
@@ -65,7 +65,7 @@ const ReplySchema = new Schema(
   
 
 
-const Comment = model('Comment', CommentSchema);
+var Comment = model('Comment', CommentSchema);
 
 
 

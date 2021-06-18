@@ -2,7 +2,7 @@ var router = require('express').Router();
 var sequelize = require('../config/connection');
 var { Post, User, Comment, Love } = require('../models');
 
-// get all posts for homepage
+
 router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     ]
   })
     .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+      var posts = dbPostData.map(post => post.get({ plain: true }));
 
       res.render('homepage', {
         posts,
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single post
+
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -75,7 +75,7 @@ router.get('/post/:id', (req, res) => {
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      var post = dbPostData.get({ plain: true });
 
       res.render('single-post', {
         post,
@@ -113,7 +113,7 @@ router.get('/posts-comments', (req, res) => {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      const post = dbPostData.get({ plain: true });
+      var post = dbPostData.get({ plain: true });
 
       res.render('posts-comments', { post, loggedIn: req.session.loggedIn });
     })

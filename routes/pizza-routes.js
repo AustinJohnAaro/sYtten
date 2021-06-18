@@ -1,4 +1,4 @@
-const router = require('express').Router();
+var router = require('express').Router();
 
 // Set up GET all and POST at /api/pizzas
 router
@@ -17,7 +17,7 @@ router
 
 module.exports = router; 
 
-const {
+var {
     getAllPizza,
     getPizzaById,
     createPizza,
